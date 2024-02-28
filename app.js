@@ -13,16 +13,19 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const traducaoClima = {
-    "few clouds":"poucas nuvens",
-    "scattered clouds":"nuvens dispersas",
-    "overcast clouds":"nuvens nubladas",
-    "shower rain":"chuva leve",
-    "clear sky":"céu limpo",
-    "broken clouds": "Sem núvens",
-    "light rain": "chuva leve",
-    "light intensity drizzle": "chuvisco leve",
-    "moderate rain": "chuva moderada",
-    "mist": "névoa"
+
+    "few clouds": "Poucas nuvens",
+    "scattered clouds": "Nuvens dispersas",
+    "overcast clouds": "Nuvens nubladas",
+    "shower rain": "Chuva rápida",
+    "clear sky": "Céu limpo",
+    "broken clouds": "Nuvens quebradas",
+    "light rain": "Chuva leve",
+    "light intensity drizzle": "Garoa leve",
+    "moderate rain": "Chuva moderada",
+    "mist": "Névoa",
+    "thunderstorm": "Tempestade",
+    "snow": "Neve"
 
 }
 
