@@ -32,3 +32,10 @@
     justify-content: center;
     align-items: center;
 }
+
+
+#mundo {
+    width: 55;
+    height: 55vh;
+    display: flex;
+}

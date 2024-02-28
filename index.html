@@ -28,7 +28,8 @@
     </form>
     
     <div id="climaResult"></div>
-    <img id="iconeClima" src="" alt="Ícone do Clima">
+    <div id="mundo"> <img src="/img/Mundo.png" alt=""></div>
+    <img id="iconeClima" src="" alt="">
 
     <script>
         document.getElementById('formClima').addEventListener('submit', function(event){
@@ -55,6 +56,10 @@
                     } else if (fundoClimatico === 'Frio') {
                         document.documentElement.style.backgroundImage = `url(/img/fundo_frio.png)`;
                     }
+
+                    // Set the weather icon based on the weather description
+                    const iconeClimaSrc = getIconeClima(data.Clima);
+                    iconeClima.src = `/img/${iconeClimaSrc}`;
                 } else {        
                     tempoResult.innerHTML = "Erro ao obter dados meteorológicos";
                 }
@@ -74,6 +79,27 @@
             }
         }
 
+        // Função para obter o ícone do clima com base na descrição do clima
+        function getIconeClima(clima) {
+            // Mapeia as descrições do clima para os nomes dos arquivos de ícones correspondentes
+            const icones = {
+                'Poucas Nuvens': 'poucas_nuvens.png',
+                'Nuvens Dispersas': 'nuvens_dispersas.png',
+                'Nublado': 'nublado.png',
+                'Nuvens Cheias': 'nuvens_cheias.png',
+                'Céu Limpo': 'ceu_limpo.png',
+                'Chuva Leve': 'chuva_leve.png',
+                'Chuvisco Intenso': 'chuvisco_intenso.png',
+                'Chuva Moderada': 'chuva_moderada.png',
+                'Chuva Rápida': 'chuva_rapida.png',
+                'Névoa': 'nevoa.png',
+                'Tempestade': 'tempestade.png',
+                'Neve': 'neve.png',
+            };
+
+            // Retorna o nome do arquivo de ícone correspondente ao clima
+            return icones[clima] || 'default.png';
+        }
     </script>
 </body>
 </html>
