@@ -1,47 +1,79 @@
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Consulta de: clima</title>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de: clima</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
 
-        <h1>Consulta do clima</h1>
+        #iconeClima {
+            max-width: 100px; /* Ajuste o tamanho conforme necessário */
+        }
+    </style>
+</head>
+<body>
 
-        <form id="formClima">
-            <label for="styleinput">Cidade</label>
-            <input type="text" id="cityInput" name="cityInput" > <br>
-            <button type="submit">Consultar</button>
-            <link rel="stylesheet" href="style.css">
-        </form>
-        
-        <div id="climaResult"></div>
+    <form id="formClima">
+        <label for="styleinput">Cidade</label>
+        <input type="text" id="cityInput" name="cityInput"> <br>
+        <button type="submit">Consultar</button>
+    </form>
+    
+    <div id="climaResult"></div>
+    <img id="iconeClima" src="" alt="Ícone do Clima">
 
-        <script>
+    <script>
+        document.getElementById('formClima').addEventListener('submit', function(event){
+            event.preventDefault();
+            
+            const city = document.getElementById('cityInput').value;
 
-            document.getElementById('formClima').addEventListener('submit', function(event){
-                event.preventDefault();
-                
-                const city = document.getElementById('cityInput').value;
+            fetch(`http://localhost:3000/climatempo/${city}`)
+            .then(response => response.json())
+            .then(data => {
+                const tempoResult = document.getElementById("climaResult");
+                const iconeClima = document.getElementById('iconeClima');
 
-                fetch(`http://localhost:3000/climatempo/${city}`)
-                .then(response => response.json())
-                .then(data => {
-                    const tempoResult = document.getElementById("climaResult")
+                if (data.Temperatura){
+                    tempoResult.innerHTML = ` Temperatura: ${data.Temperatura}°C <br/>
+                    Umidade: ${data.Umidade}% <br/>
+                    Velocidade do Vento: ${data.VelocidadeVento} m/s <br/>
+                    Descrição do Clima: ${data.Clima}`;
 
-                    if (data.Temperatura){
-                        tempoResult.innerHTML = `Temperatura: ${data.Temperatura}°C <br/>
-                        Umidade: ${data.Umidade}% <br/>
-                        Velocidade do Vento: ${data.VelocidadeVento} m/s <br/>
-                        Descrição do Clima: ${data.Clima}`;
-                    } else {
-                        tempoResult.innerHTML = "Erro ao obter dados meterológicos";
+                    // Altera o fundo com base nas condições climáticas
+                    const fundoClimatico = getFundoClimatico(data.Clima);
+                    if (fundoClimatico === 'Escuro') {
+                        document.documentElement.style.backgroundImage = `url(/img/fundo_escuro.png)`;
+                    } else if (fundoClimatico === 'Frio') {
+                        document.documentElement.style.backgroundImage = `url(/img/fundo_frio.png)`;
                     }
-                })
-                .catch (error => console.error ("Erro ao obter dados"));
+                } else {        
+                    tempoResult.innerHTML = "Erro ao obter dados meteorológicos";
+                }
             })
+            .catch(error => console.error("Erro ao obter dados:", error));
+        });
 
-        </script>
-    </body>
-    </html>
+        // Função para obter o tipo de fundo com base no clima
+        function getFundoClimatico(clima) {
+            // Lógica para determinar o tipo de fundo com base no clima
+            if (clima.toLowerCase().includes('tempestade') || clima.toLowerCase().includes('chuva')) {
+                // Se há tempestade ou chuva: Escuro
+                return 'Escuro';
+            } else {
+                // Frio
+                return 'Frio';
+            }
+        }
+
+    </script>
+</body>
+</html>
