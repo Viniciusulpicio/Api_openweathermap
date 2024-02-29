@@ -39,3 +39,15 @@
     height: 55vh;
     display: flex;
 }
+
+#botao{
+    width: 50px;
+    align-items: center;
+    text-align: center;
+}
+
+#mundo_icon{
+    max-width: 50px;
+    margin-top: 10px;
+    width: 10px;
+}
