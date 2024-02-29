@@ -47,7 +47,22 @@
 }
 
 #mundo_icon{
-    max-width: 50px;
     margin-top: 10px;
-    width: 10px;
+    width: 100px;
+}
+
+#climaResult img{
+   /*  width: 50%; */
+}
+.icon-temp{
+    height: 80px;
+   
+}
+
+.card-temp{
+    display: flex;
+}
+.numero{
+    font-size: 48px;
+    margin: -10px;
 }
