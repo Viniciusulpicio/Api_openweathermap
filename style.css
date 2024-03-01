@@ -1,9 +1,19 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
 :root {
     background-image: url(/img/fundo_principal.png);
     background-size: cover;
 }
 
-#formClima {
+body{
+    width: 100%;   
+    height: 100%;
+}
+
+.conteudo {
     background: rgb(255, 255, 248);
     margin-left: auto;
     margin-right: auto;
@@ -12,57 +22,13 @@
     height: 570px;
     border-radius: 35px;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#Ensolarado {
-    width: 100px; 
-    height: 100px; 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#texto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.iconvento{
+    width: 80px;
 }
 
 
-#mundo {
-    width: 55;
-    height: 55vh;
-    display: flex;
-}
-
-#botao{
-    width: 50px;
-    align-items: center;
-    text-align: center;
-}
-
-#mundo_icon{
-    margin-top: 10px;
-    width: 100px;
-}
-
-#climaResult img{
-   /*  width: 50%; */
-}
-.icon-temp{
-    height: 80px;
-   
-}
-
-.card-temp{
-    display: flex;
-}
-.numero{
-    font-size: 48px;
-    margin: -10px;
-}

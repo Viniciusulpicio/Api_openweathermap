@@ -6,34 +6,22 @@
     <title>Consulta de: clima</title>
     <link rel="stylesheet" href="style.css" />
 
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-      }
-
-      #iconeClima {
-        max-width: 100px; /* Ajuste o tamanho conforme necessário */
-      }
-    </style>
   </head>
   <body>
-    <form id="formClima">
+    <div class="conteudo">
+
+      <form id="formClima">
+        <label for="styleinput">Cidade</label>
+        <input type="text" id="cityInput" name="cityInput" /> <br />
+        <button id="botao" type="submit">
+          <img src="/img/pesquisa.png" alt="" id="botao" />
+        </button>
+      </form>
+
       <div id="climaResult">
-            <img id="mundo_icon" src="/img/Mundo.png" alt="" />
-
+        <img id="mundo_icon" src="/img/Mundo.png" alt="" />
       </div>
-      <label for="styleinput">Cidade</label>
-      <input type="text" id="cityInput" name="cityInput" /> <br />
-      <button id="botao" type="submit">
-        <img src="/img/pesquisa.png" alt="" id="botao" />
-      </button>
-    </form>
-
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
