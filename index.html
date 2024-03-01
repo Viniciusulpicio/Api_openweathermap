@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Consulta de: clima</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Shrikhand&display=swap" rel="stylesheet">
 
   </head>
   <body>
     <div class="conteudo">
 
       <form id="formClima">
-        <label for="styleinput">Cidade</label>
-        <input type="text" id="cityInput" name="cityInput" /> <br />
-        <button id="botao" type="submit">
-          <img src="/img/pesquisa.png" alt="" id="botao" />
-        </button>
+        <div class="search-box">
+          <input class="search-txt" type="text" name="search-txt" id="search-txt" placeholder="ESCREVA UMA CIDADE AQUI">
+          <a class="search-btn" href="#">
+              <img src="/img/pesquisa.png" alt="Botão" width="55px" id="searchicon">
+          </a>
+      </div>  
       </form>
 
       <div id="climaResult">
