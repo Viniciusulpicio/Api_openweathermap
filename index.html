@@ -1,31 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Consulta de: clima</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Shrikhand&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consulta do Clima</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Shrikhand&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet" />
 
-  </head>
-  <body>
-    <div class="conteudo">
-
-      <form id="formClima">
-        <div class="search-box">
-          <input class="search-txt" type="text" name="search-txt" id="search-txt" placeholder="ESCREVA UMA CIDADE AQUI">
-          <a class="search-btn" href="#">
-              <img src="/img/pesquisa.png" alt="Botão" width="55px" id="searchicon">
-          </a>
-      </div>  
-      </form>
-
-      <div id="climaResult">
-        <img id="mundo_icon" src="/img/Mundo.png" alt="" />
+</head>
+<body>
+  <div class="conteudo">
+    <form id="formClima">
+      <div class="search-box">
+        <img src="/img/Local.png" alt="local" id="local" />
+        <input class="search-txt" type="text" name="search-txt" id="search-txt" placeholder="ESCREVA UMA CIDADE AQUI" />
+        <a class="search-icon" href="#">
+          <img src="/img/pesquisa.png" alt="Botão" id="search-icon" />
+        </a>
       </div>
+    </form>
+
+    <div id="climaResult">
+      <img src="/img/Mundo.png" alt="mundo" id="mundo" />
     </div>
-    <script src="script.js"></script>
-  </body>
+
+  </div>
+
+  <script>
+    document.getElementById("search-txt").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.querySelector(".search-icon").click();
+      }
+    });
+
+    document.querySelector(".search-icon").addEventListener("click", async (event) => {
+      event.preventDefault();
+
+      const searchBox = document.querySelector(".search-box");
+      const cityInput = document.getElementById("search-txt").value;
+
+      try {
+        const response = await fetch(`http://localhost:3000/climatempo/${cityInput}`);
+        const data = await response.json();
+
+        document.getElementById("climaResult").style.display = "block";
+
+        const tempoResult = document.getElementById("climaResult");
+        const climaLowerCase = data.Clima.toLowerCase();
+
+        let imagemSrc;
+        let fundoClimatico;
+
+        if (climaLowerCase === "poucas nuvens") {
+          imagemSrc = "./img/poucas_nuvens.png";
+        } else if (climaLowerCase === "nuvens dispersas") {
+          imagemSrc = "./img/nuvens_dispersas.png";
+        } else if (climaLowerCase === "nublado") {
+          imagemSrc = "./img/nublado.png";
+        } else if (climaLowerCase === "nuvens cheias") {
+          imagemSrc = "./img/nuvens_cheias.png";
+        } else if (climaLowerCase === "céu limpo") {
+          imagemSrc = "./img/ceu_limpo.png";
+        } else if (climaLowerCase === "chuva leve") {
+          imagemSrc = "/img/chuva_leve.png";
+        } else if (climaLowerCase === "chuvisco intenso") {
+          imagemSrc = "./img/chuvisco_intenso.png";
+        } else if (climaLowerCase === "chuva moderada") {
+          imagemSrc = "./img/chuva_moderada.png";
+        } else if (climaLowerCase === "chuva rapida") {
+          imagemSrc = "./img/chuva_rapida.png";
+        } else if (climaLowerCase === "névoa") {
+          imagemSrc = "./img/nevoa.png";
+        } else if (climaLowerCase === "tempestade") {
+          imagemSrc = "./img/tempestade.png";
+        } else if (climaLowerCase === "neve") {
+          imagemSrc = "./img/neve.png";
+        } else {
+          console.log("error");
+        }
+
+        if (climaLowerCase.includes("chuva") || climaLowerCase.includes("chuva moderada") || climaLowerCase.includes("chuva rapida") || climaLowerCase.includes("chuva leve") || climaLowerCase.includes("chuvisco intenso") || climaLowerCase.includes("tempestade")) {
+          fundoClimatico = "Escuro";
+        } else if (climaLowerCase.includes("neve") || climaLowerCase.includes("nevoa") || climaLowerCase.includes("nuvens cheias")) {
+          fundoClimatico = "Frio";
+        } else {
+          fundoClimatico = "Quente";
+        }
+
+        if (fundoClimatico === "Escuro") {
+          document.documentElement.style.backgroundImage = `url(./img/fundo_escuro.png)`;
+        } else {
+          document.documentElement.style.backgroundImage = `url(./img/fundo_frio.png)`;
+        }
+
+        if (data.Temperatura) {
+          tempoResult.innerHTML = `
+            <img src="${imagemSrc}" alt="Clima" id="clima-icon">
+            <div class="geral" id="umidade_icon">
+              <div class="card-temp">
+                <img class="iconumidade" src="./img/Umidade.png" alt="umidade">
+                <p class="numero">${data.Umidade}%</p>
+                <p id="umidade_fonte">Umidade</p>
+              </div> <br />
+
+              <div >
+                <p class= "temperatura"> ${data.Temperatura}°C </p>
+                <p class= "clima"> ${data.Clima} </p>
+              </div><br />
+
+              <div class="card-temp">
+                <img class="iconvento" src="./img/vento.png" alt="vento" id="vento" > <br />
+                <p class="numero">${data.VelocidadeDoVento}Km/h</p>
+                <p id= "velocidade_vento">Velocidade do Vento</p>
+              </div><br />
+            </div>`;
+        } else {
+          tempoResult.innerHTML = "Erro ao obter dados meteorológicos";
+        }
+      } catch (error) {
+        console.error("Erro ao obter dados:", error);
+
+      }
+    });
+  </script>
+</body>
 </html>

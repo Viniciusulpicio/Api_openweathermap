@@ -11,6 +11,8 @@
 body{
     width: 100%;   
     height: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: x-large;
 }
 
 .conteudo {
@@ -18,68 +20,105 @@ body{
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
-    width: 1350px;
-    height: 570px;
+    width: 175vh;
+    height: 77vh;
     border-radius: 35px;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
 }
 
 
-
-.search-box{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: #073C50;
-    border-radius: 40px;
+#formClima {
+    display: flex;
     padding: 10px;
 }
 
-.search-box:hover > .search-txt{
-    width: 240px;
-    padding: 0 5px;
+#local {
+    width: 90%;
+    top: 10px;
+    right: 10px;
+  }
+
+#search-txt {
+    height: 4%;
+    width: 27%;
+    position: absolute;
+    top: 4%;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: "Inter", sans-serif; 
+    color: rgb(0, 0, 0);
+    font-size: x-large;
+    border-radius: 40px;
+    text-align: center;
+  }
+
+.search-box{
+    max-width: 100px;
 }
 
-.search-box:hover > .search-btn{
-    background: none;
-}
+#search-icon {
+    width: 9%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 
-.search-btn{
-    color: white;
-    float: right;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: white;
+
+#climaResult{
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
 }
 
-.search-txt{
-    font-family: "Inter", sans-serif;
-    border: none;
-    background: none;
-    outline: none;
-    float: left;
-    padding: 0;
-    color: white;
-    font-size: 15px;
-    transition: 0.3s;
-    line-height: 40px;
-    width: 0px;
+#mundo{
+    width: 60;
+    height: 60vh;
+    display: flex;
+    margin-left: 150%;
 }
 
-#quadrado .search-box{
-    height: 40px;
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-    font-size: x-large;
+.iconvento,
+.iconumidade{
+    width: 170px;
 }
 
 
+.geral {
+    position: absolute;
+    top: 78%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 80%;
+    background-color: #f0f0f0;
+}
+
+.card-temp {
+    flex: 1;
+    margin: 0 10%; 
+    text-align: center;
+}
+
+#clima-icon {
+    position: absolute;
+    top: 15%;
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 25%;
+}
+
+.temperatura{
+    text-align: center;
+    font-family: 'Shrikhand', cursive;
+    font-size: 130%;
+}
+
+#velocidade_vento,
+#umidade_fonte{
+    font-size: medium;
+}
