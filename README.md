@@ -19,3 +19,5 @@ Para começar a usar o aplicativo, siga os passos abaixo:
 ### Gere sua api de graça no site : 
 
 * https://openweathermap.org/api
+
+![image](https://github.com/Viniciusulpicio/Api_openweathermap/assets/145928303/0fc92b1f-466a-46d1-938a-627d3ec81283)
