@@ -25,7 +25,8 @@ const traducaoClima = {
     "shower rain": "Chuva Rápida",
     "mist": "Névoa",
     "thunderstorm": "Tempestade",
-    "snow": "Neve"
+    "snow": "Neve",
+    "light intensity shower rain": "sei la que porra "
     
 }
 

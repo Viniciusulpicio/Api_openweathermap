@@ -14,6 +14,10 @@
 
 </head>
 <body>
+  <div id="loader">
+    <img src="/img/carregando.gif" alt="Loading..." />
+  </div>
+
   <div class="conteudo">
     <form id="formClima">
       <div class="search-box">
@@ -32,6 +36,8 @@
   </div>
 
   <script>
+    const loader = document.getElementById("loader");
+
     document.getElementById("search-txt").addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         event.preventDefault();
@@ -41,6 +47,8 @@
 
     document.querySelector(".search-icon").addEventListener("click", async (event) => {
       event.preventDefault();
+      loader.style.display = "flex";
+
 
       const searchBox = document.querySelector(".search-box");
       const cityInput = document.getElementById("search-txt").value;
@@ -120,12 +128,14 @@
                 <p id= "velocidade_vento">Velocidade do Vento</p>
               </div><br />
             </div>`;
+            loader.style.display = "none";
         } else {
           tempoResult.innerHTML = "Erro ao obter dados meteorológicos";
         }
       } catch (error) {
         console.error("Erro ao obter dados:", error);
-
+        loader.style.display = "none";
+      console.error("Erro ao obter dados:", error);
       }
     });
   </script>
