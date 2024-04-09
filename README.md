@@ -16,6 +16,9 @@ Para começar a usar o aplicativo, siga os passos abaixo:
      "apikey": "SUA API"
    }
 
+
+``Importante: Execute o código "node app" no console para executar o código
+
 ### Gere sua api de graça no site : 
 
 * https://openweathermap.org/api
