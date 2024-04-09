@@ -18,8 +18,8 @@ Para começar a usar o aplicativo, siga os passos abaixo:
 
    
 Importante: Execute o código no console
-    ```node
-       node app
+   ```json
+   node app
 
 ### Gere sua api de graça no site : 
 
