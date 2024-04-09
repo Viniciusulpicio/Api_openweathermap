@@ -28,8 +28,6 @@ Para começar a usar o aplicativo, siga estas etapas:
 node app
 ```
 
-### Gere sua API gratuitamente no site: 
-* [OpenWeatherMap API](https://openweathermap.org/api)
-
+### Sua aplicação ficará assim: 
 ![Imagem](https://github.com/Viniciusulpicio/Api_openweathermap/assets/145928303/0fc92b1f-466a-46d1-938a-627d3ec81283)
 
