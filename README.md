@@ -22,15 +22,11 @@ Para começar a usar o aplicativo, siga estas etapas:
 
 ## Como executar o aplicativo
 
-Execute o seguinte comando no terminal:
 
+###Execute o seguinte comando no terminal:
 ```bash
 node app
 ```
-
-### Importante: Execute o código no console
-```node
-node app 
 
 ### Gere sua API gratuitamente no site: 
 * [OpenWeatherMap API](https://openweathermap.org/api)
