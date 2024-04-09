@@ -16,8 +16,10 @@ Para começar a usar o aplicativo, siga os passos abaixo:
      "apikey": "SUA API"
    }
 
-
-``Importante: Execute o código "node app" no console para executar o código
+   
+Importante: Execute o código no console
+    ```node
+       node app
 
 ### Gere sua api de graça no site : 
 
