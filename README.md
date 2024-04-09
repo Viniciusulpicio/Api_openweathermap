@@ -1,26 +1,36 @@
 # Senai Weather App
 
-Este é um projeto desenvolvido para as aulas do Senai, utilizando a API do OpenWeatherMap para obter informações meteorológicas. 
+Este é um aplicativo de previsão do tempo desenvolvido como parte das aulas do Senai. Utiliza a API do OpenWeatherMap para fornecer informações meteorológicas.
 
 ## Configuração
 
-Para começar a usar o aplicativo, siga os passos abaixo:
+Para começar a usar o aplicativo, siga estas etapas:
 
-1. Execute o comando \`npm install\` para instalar as dependências necessárias.
+1. Execute o comando `npm install` para instalar as dependências necessárias.
 
-2. Crie um arquivo chamado \`config.json\`.
+2. Crie um arquivo chamado `config.json` na raiz do projeto.
 
-3. Dentro do arquivo \`config.json\`, adicione as seguintes informações:
-   \`\`\`json
+3. Dentro do arquivo `config.json`, adicione as seguintes informações:
+   ```json
    {
      "apikey": "SUA API"
    }
-   \`\`\`
+   ```
+   Substitua "SUA API" pela chave da API do OpenWeatherMap. Você pode gerar uma gratuitamente em [OpenWeatherMap API](https://openweathermap.org/api).
+
+4. Após configurar o arquivo `config.json`, você pode executar o aplicativo.
+
+## Como executar o aplicativo
+
+Execute o seguinte comando no terminal:
+
+```bash
+node app
+```
 
 ### Importante: Execute o código no console
-\`\`\`node
+```node
 node app 
-\`\`\`
 
 ### Gere sua API gratuitamente no site: 
 * [OpenWeatherMap API](https://openweathermap.org/api)
