@@ -26,4 +26,4 @@ node app
 * [OpenWeatherMap API](https://openweathermap.org/api)
 
 ![Imagem](https://github.com/Viniciusulpicio/Api_openweathermap/assets/145928303/0fc92b1f-466a-46d1-938a-627d3ec81283)
-`;
+
