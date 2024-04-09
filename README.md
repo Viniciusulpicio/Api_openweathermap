@@ -1,4 +1,3 @@
-const markdownContent = `
 # Senai Weather App
 
 Este é um projeto desenvolvido para as aulas do Senai, utilizando a API do OpenWeatherMap para obter informações meteorológicas. 
@@ -28,5 +27,3 @@ node app
 
 ![Imagem](https://github.com/Viniciusulpicio/Api_openweathermap/assets/145928303/0fc92b1f-466a-46d1-938a-627d3ec81283)
 `;
-
-console.log(markdownContent);
