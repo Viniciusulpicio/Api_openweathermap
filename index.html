@@ -13,7 +13,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet" />
-
 </head>
 
 <body>
@@ -34,12 +33,13 @@
     <div id="climaResult">
       <img src="./img/Mundo.png" alt="mundo" id="mundo" />
     </div>
-
   </div>
 
   <script>
+    // Função para lidar com o carregamento
     const loader = document.getElementById("loader");
 
+    // Função para permitir a submissão do formulário ao pressionar "Enter"
     document.getElementById("search-txt").addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         event.preventDefault();
@@ -47,18 +47,20 @@
       }
     });
 
+    // Função para buscar informações climáticas quando o ícone de pesquisa é clicado
     document.querySelector(".search-icon").addEventListener("click", async (event) => {
       event.preventDefault();
       loader.style.display = "flex";
 
-
-      const searchBox = document.querySelector(".search-box");
+      // Obtém a entrada da cidade do usuário
       const cityInput = document.getElementById("search-txt").value;
 
       try {
+        // Realiza uma solicitação para obter os dados climáticos da API local
         const response = await fetch(`http://localhost:3000/climatempo/${cityInput}`);
         const data = await response.json();
 
+        // Exibe a seção de resultados climáticos
         document.getElementById("climaResult").style.display = "block";
 
         const tempoResult = document.getElementById("climaResult");
@@ -67,6 +69,7 @@
         let imagemSrc;
         let fundoClimatico;
 
+        // Determina a imagem apropriada com base no tipo de clima
         if (climaLowerCase === "poucas nuvens") {
           imagemSrc = "./img/poucas_nuvens.png";
         } else if (climaLowerCase === "nuvens dispersas") {
@@ -95,6 +98,7 @@
           console.log("error");
         }
 
+        // Determina o tipo de fundo com base no clima
         if (climaLowerCase.includes("chuva") || climaLowerCase.includes("chuva moderada") || climaLowerCase.includes("chuva rapida") || climaLowerCase.includes("chuva leve") || climaLowerCase.includes("chuvisco intenso") || climaLowerCase.includes("tempestade")) {
           fundoClimatico = "Escuro";
         } else if (climaLowerCase.includes("neve") || climaLowerCase.includes("nevoa") || climaLowerCase.includes("nuvens cheias")) {
@@ -103,28 +107,27 @@
           fundoClimatico = "Quente";
         }
 
+        // Define o fundo da página com base no clima
         if (fundoClimatico === "Escuro") {
           document.documentElement.style.backgroundImage = `url(./img/fundo_escuro.png)`;
         } else {
           document.documentElement.style.backgroundImage = `url(./img/fundo_frio.png)`;
         }
 
+        // Exibe os dados meteorológicos na página
         if (data.Temperatura) {
           tempoResult.innerHTML = `
           <img src="${imagemSrc}" alt="Clima" id="clima-icon">
-
             <div class="geral" id="umidade_icon">
               <div class="card-temp">
                 <img class="iconumidade" src="./img/Umidade.png" alt="umidade">
                 <p class="numero">${data.Umidade}%</p>
                 <p id="umidade_fonte">Umidade</p>
               </div> <br />
-
-              <div >
+              <div>
                 <p class= "temperatura"> ${data.Temperatura}°C </p>
                 <p class= "clima"> ${data.Clima} </p>
               </div><br />
-
               <div class="card-temp">
                 <img class="iconvento" src="./img/vento.png" alt="vento" id="vento" > <br />
                 <p class="numero">${data.VelocidadeDoVento}Km/h</p>
@@ -138,7 +141,6 @@
       } catch (error) {
         console.error("Erro ao obter dados:", error);
         loader.style.display = "none";
-        console.error("Erro ao obter dados:", error);
       }
     });
   </script>
